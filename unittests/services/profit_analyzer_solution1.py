@@ -29,6 +29,20 @@ class TestMaxProfit(unittest.TestCase):
         stock_prices_yesterday = None
         self.assertRaises(TypeError, get_max_profit, stock_prices_yesterday)
 
+    def test_scenario2(self):
+        #   Sufficient input scenario:-
+        #           If the stock_prices_yesterday variable is a list containing atleast 2 or more elements
+        #           Assumption: All elements provided are of type int only
+
+        stock_prices_yesterday = [10, 7]
+
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0,
+                         "Max. Profit should be equal to 0")
+
+        stock_prices_yesterday = [10, 7, 5, 8, 11, 9]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 6,
+                         "Max. Profit should be equal to 6")
+
 
 if __name__ == '__main__':
     unittest.main()
