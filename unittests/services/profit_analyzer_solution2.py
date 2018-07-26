@@ -39,10 +39,46 @@ class TestMaxProfit(unittest.TestCase):
         self.assertEqual(get_max_profit(stock_prices_yesterday), 6,
                          "Max. Profit should be equal to 6")
 
-        # There is no opportunity to gain profit, so minimize the loss
+        # There is no opportunity to gain profit with only 2 stock prices, so minimize the loss
         stock_prices_yesterday = [10, 7]
         self.assertEqual(get_max_profit(stock_prices_yesterday), -3,
                          "Max. Profit (to minimize the loss) should be equal to -3")
+
+        # There is no opportunity to gain profit, so minimize the loss
+        stock_prices_yesterday = [10, 8, 4, 1]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), -2,
+                         "Max. Profit (to minimize the loss) should be equal to -2")
+
+        # There is an opportunity to gain profit, so minimize the loss
+        stock_prices_yesterday = [10, 8, 7, 3, 7]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 4,
+                         "Max. Profit (to minimize the loss) should be equal to 4")
+
+        # There is no opportunity to gain profit due to stagnant prices from opening to closing price
+        stock_prices_yesterday = [7, 7, 7, 7, 7, 7, 7, 7]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0,
+                         "Max. Profit should be equal to 0")
+
+        # There is no opportunity to gain profit due to stagnant prices after the opening price,
+        # but the minimum loss will be 0
+        stock_prices_yesterday = [10, 7, 7, 7]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0,
+                         "Max. Profit should be equal to 0")
+
+        # There is opportunity to gain profit (both the min buy price and max sale price are in float)
+        stock_prices_yesterday = [10, 7.54, 7.53, 7.55]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0.02,
+                         "Max. Profit should be equal to 0.02")
+
+        # There is opportunity to gain profit (min buy price is int and max sale price in float)
+        stock_prices_yesterday = [10, 7.54, 7, 7.55]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0.55,
+                         "Max. Profit should be equal to 0.02")
+
+        # There is opportunity to gain profit (min buy price is float and max sale price in int)
+        stock_prices_yesterday = [10, 7.54, 7.53, 8]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 0.47,
+                         "Max. Profit should be equal to 0.02")
 
 
 if __name__ == '__main__':
