@@ -6,10 +6,12 @@
     Unit Test   : unittests\services\profit_analyzer_solution1.py
 """
 
+import datetime
+
 
 def get_max_profit(stock_prices_yesterday):
     # Identify max profit from list of stock prices as of previous day's trading session
-
+    start_time = datetime.datetime.now()
     # If stock_prices_yesterday is of type None, then raise TypeError
     if stock_prices_yesterday is None:
         raise TypeError('Stock Prices from yesterday should be of list type')
@@ -21,6 +23,8 @@ def get_max_profit(stock_prices_yesterday):
     max_profit = 0
     buy_at_min_value = min(stock_prices_yesterday)
     post_buy_stock_prices = stock_prices_yesterday[stock_prices_yesterday.index(buy_at_min_value)+1:]
-    max_profit = max(post_buy_stock_prices) - buy_at_min_value if post_buy_stock_prices else max_profit
-    return round(max_profit, 3)
+    max_profit = round(max(post_buy_stock_prices) - buy_at_min_value, 3) if post_buy_stock_prices else max_profit
+    print("Overall Time taken (in seconds) by get_max_profit method: {}".format(
+        (datetime.datetime.now() - start_time).total_seconds()))
+    return max_profit
 
