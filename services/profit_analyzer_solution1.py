@@ -10,6 +10,10 @@
 def get_max_profit(stock_prices_yesterday):
     # Identify max profit from list of stock prices as of previous day's trading session
 
+    # If stock_prices_yesterday is of type None, then raise TypeError
+    if stock_prices_yesterday is None:
+        raise TypeError('Stock Prices from yesterday should be of list type')
+
     # If stock_prices_yesterday is an empty list or contains less than 2 elements, then raise IndexError
     if type(stock_prices_yesterday) == list and (not stock_prices_yesterday or len(stock_prices_yesterday) < 2):
         raise IndexError('Stock Prices from yesterday should have at least 2 values or more')

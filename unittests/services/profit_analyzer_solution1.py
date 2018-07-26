@@ -25,6 +25,10 @@ class TestMaxProfit(unittest.TestCase):
         stock_prices_yesterday = [10]
         self.assertRaises(IndexError, get_max_profit, stock_prices_yesterday)
 
+        #   If stock_prices_yesterday is of type None, then check if TypeError is thrown
+        stock_prices_yesterday = None
+        self.assertRaises(TypeError, get_max_profit, stock_prices_yesterday)
+
 
 if __name__ == '__main__':
     unittest.main()
