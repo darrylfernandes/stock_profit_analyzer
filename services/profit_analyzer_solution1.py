@@ -17,3 +17,10 @@ def get_max_profit(stock_prices_yesterday):
     # If stock_prices_yesterday is an empty list or contains less than 2 elements, then raise IndexError
     if type(stock_prices_yesterday) == list and (not stock_prices_yesterday or len(stock_prices_yesterday) < 2):
         raise IndexError('Stock Prices from yesterday should have at least 2 values or more')
+
+    max_profit = 0
+    buy_at_min_value = min(stock_prices_yesterday)
+    post_buy_stock_prices = stock_prices_yesterday[stock_prices_yesterday.index(buy_at_min_value)+1:]
+    max_profit = max(post_buy_stock_prices) - buy_at_min_value if post_buy_stock_prices else max_profit
+    return max_profit
+
