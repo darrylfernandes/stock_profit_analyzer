@@ -22,5 +22,5 @@ def get_max_profit(stock_prices_yesterday):
     buy_at_min_value = min(stock_prices_yesterday)
     post_buy_stock_prices = stock_prices_yesterday[stock_prices_yesterday.index(buy_at_min_value)+1:]
     max_profit = max(post_buy_stock_prices) - buy_at_min_value if post_buy_stock_prices else max_profit
-    return max_profit
+    return round(max_profit, 3)
 
