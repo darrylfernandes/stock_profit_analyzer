@@ -17,3 +17,17 @@ def get_max_profit(stock_prices_yesterday):
     # If stock_prices_yesterday is an empty list or contains less than 2 elements, then raise IndexError
     if type(stock_prices_yesterday) == list and (not stock_prices_yesterday or len(stock_prices_yesterday) < 2):
         raise IndexError('Stock Prices from yesterday should have at least 2 values or more')
+
+    stock_opening_price = stock_prices_yesterday[0]
+    remaining_stock_prices_post_opening_price = stock_prices_yesterday[1:]
+
+    max_profit = round(max(remaining_stock_prices_post_opening_price) - stock_opening_price, 3)
+
+    for current_index, current_stock_price in enumerate(remaining_stock_prices_post_opening_price):
+        next_stock_prices = remaining_stock_prices_post_opening_price[current_index + 1:]
+        if not next_stock_prices:
+            break
+        buy_sell_diff = round(max(next_stock_prices) - current_stock_price, 3)
+        if max_profit < buy_sell_diff:
+            max_profit = buy_sell_diff
+    return max_profit
