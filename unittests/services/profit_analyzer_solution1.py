@@ -21,4 +21,12 @@ class TestMaxProfit(unittest.TestCase):
         stock_prices_yesterday = []
         self.assertRaises(IndexError, get_max_profit, stock_prices_yesterday)
 
+        #   If stock_prices_yesterday is a list containing less than 2 elements, then check if IndexError is thrown
+        stock_prices_yesterday = [10]
+        self.assertRaises(IndexError, get_max_profit, stock_prices_yesterday)
+
+
+if __name__ == '__main__':
+    unittest.main()
+
 
