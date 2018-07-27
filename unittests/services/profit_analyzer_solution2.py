@@ -80,6 +80,11 @@ class TestMaxProfit(unittest.TestCase):
         self.assertEqual(get_max_profit(stock_prices_yesterday), 0.47,
                          "Max. Profit should be equal to 0.02")
 
+        # Stock prices provided by James after code-review
+        stock_prices_yesterday = [7, 3, 6, 5, 4, 1]
+        self.assertEqual(get_max_profit(stock_prices_yesterday), 3,
+                         "Max. Profit should be equal to 3")
+
 
 if __name__ == '__main__':
     unittest.main()
